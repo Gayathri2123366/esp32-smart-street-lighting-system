@@ -1,0 +1,41 @@
+int ldrpin = 34;
+int pirpin = 13;
+int ledpin = 18;
+
+int threshold = 2000;
+
+void setup()
+{
+  pinMode(pirpin , INPUT);
+  pinMode(ledpin , OUTPUT);
+
+  Serial.begin(115200);
+}
+
+void loop()
+{
+  int lightvalue = analogRead(ldrpin);
+  int motion = digitalRead(pirpin);
+
+  Serial.print("Light: ");
+  Serial.println(lightvalue);
+  Serial.print("Motion:");
+  Serial.println(motion);
+
+  if(lightvalue > threshold)
+  {
+    analogWrite(ledpin , 0);
+  }
+  else
+  {
+    if(motion ==HIGH)
+    {
+      analogWrite(ledpin,255);
+    }
+    else
+    {
+      analogWrite(ledpin, 80);
+    
+    }
+  }
+}
