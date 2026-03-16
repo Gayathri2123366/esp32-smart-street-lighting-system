@@ -1,50 +1,99 @@
-
 # ESP32 Smart Street Lighting System
 
 ## Overview
 
 This project implements an intelligent street lighting system using an ESP32 microcontroller. The system automatically controls streetlight brightness based on ambient light conditions and motion detection, improving energy efficiency and safety.
 
+The system was designed and validated using the Wokwi ESP32 simulator before hardware implementation.
+
+---
+
+## Live Simulation
+
+You can run the complete circuit simulation here:
+
+https://wokwi.com/projects/458642497868369921
+
+---
+
+## System Architecture
+
+```
+        LDR Sensor
+           │
+           │ (Ambient Light)
+           ▼
+        ESP32 Controller ─────► LED Street Light
+           ▲
+           │
+     PIR Motion Sensor
+```
+
+The ESP32 reads the LDR sensor to determine day or night conditions.
+If it is night, the LED operates in **energy-saving dim mode**.
+When the PIR sensor detects motion, the LED switches to **full brightness**.
+
+---
+
 ## Features
 
-* Automatic day/night detection using an LDR sensor
-* Motion detection using a PIR sensor
-* Adaptive LED brightness using PWM control
-* Energy-efficient smart lighting logic
+* Automatic day/night detection using LDR sensor
+* Motion detection using PIR sensor
+* Adaptive brightness control using PWM
+* Energy-efficient street lighting logic
+* ESP32-based IoT-ready architecture
 * Simulation implemented using Wokwi
+
+---
 
 ## Components Used
 
-* ESP32 Microcontroller
+* ESP32 Development Board
 * LDR Light Sensor Module
 * PIR Motion Sensor
 * LED
-* 220Ω Resistor
+* 220Ω Current Limiting Resistor
+
+---
 
 ## Working Principle
 
-The LDR sensor measures ambient light intensity. When the environment is bright (daytime), the streetlight remains OFF. When it becomes dark (nighttime), the LED operates in dim mode to conserve energy. If motion is detected by the PIR sensor, the LED brightness increases to provide adequate illumination.
+The LDR sensor measures ambient light intensity.
 
-## System Logic
+System behavior:
 
-Day → LED OFF
+```
+Daytime → LED OFF
 Night + No Motion → LED DIM
-Night + Motion → LED FULL BRIGHTNESS
+Night + Motion Detected → LED FULL BRIGHTNESS
+```
 
-## Simulation
+This adaptive lighting logic reduces energy consumption while ensuring safety.
 
-The circuit and embedded logic were implemented and tested using the Wokwi ESP32 simulator.
+---
 
-## Future Improvements
 
-* WiFi connectivity using ESP32
-* MQTT-based communication
-* Smart city monitoring dashboard using Node-RED
-* Energy consumption monitoring
-* Integration with cloud IoT platforms
 
 ## Applications
 
 * Smart city infrastructure
 * Energy-efficient street lighting
-* Automated outdoor lighting systems
+* Automated outdoor lighting
+* Smart traffic monitoring systems
+
+---
+
+## Future Improvements
+
+* WiFi connectivity using ESP32
+* MQTT-based communication
+* Remote monitoring dashboard (Node-RED)
+* Cloud-based smart city integration
+* Energy consumption monitoring
+
+---
+
+## Author
+
+Gayathri Devarapu
+
